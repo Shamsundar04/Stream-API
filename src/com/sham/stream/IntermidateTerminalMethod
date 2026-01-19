@@ -1,0 +1,85 @@
+	🌟 INTERMEDIATE METHODS
+	
+	Intermediate operations always return a Stream and are lazy (they don’t run until a terminal op is used).
+	
+	1. filter()
+	Keeps elements that match a condition.
+	
+	2. map()
+	Transforms each element.
+	
+	3. flatMap()
+	Flattens nested streams.
+	
+	4. sorted()
+	Sorts elements (natural or custom comparator).
+	
+	5. distinct()
+	Removes duplicates.
+	
+	6. limit()
+	Limits the number of elements.
+	
+	7. skip()
+	Skips first n elements.
+	
+	8. peek()
+	Debugging — allows looking at elements without consuming them.
+	
+	9. mapToInt(), mapToLong(), mapToDouble()
+	Converts object stream → primitive stream.
+	
+	10. flatMapToInt(), flatMapToLong(), flatMapToDouble()
+	Flatten + convert to primitive stream.
+	
+	11. boxed()
+	Converts primitive stream → object stream.
+	
+	🌟 TERMINAL METHODS
+	
+	Terminal operations produce a result (value, Optional, list, or side-effect) and end the stream.
+	
+	1. forEach()	
+	Performs an action for each element.
+	
+	2. forEachOrdered()
+	Same as forEach, but maintains encounter order.
+	
+	3. collect()	
+	Collects result into List/Set/Map or custom collector.
+	
+	4. toArray()	
+	Returns array of elements.
+	
+	5. reduce()	
+	Reduces stream into a single value (sum, product, etc.).
+	
+	6. count()	
+	Counts number of elements.
+	
+	7. findFirst()	
+	Returns first element (Optional).
+	
+	8. findAny()	
+	Returns any element (Optional) – usually for parallel streams.
+	
+	9. anyMatch()	
+	Returns true if any element matches.
+	
+	10. allMatch()
+	Returns true if all elements match.
+	
+	11. noneMatch()	
+	True if no elements match.
+	
+	12. min()
+	Finds minimum element.
+	
+	13. max()
+	Finds maximum element.
+	
+	14. sum() (for IntStream/LongStream/DoubleStream)
+	Adds all values.
+	
+	15. average()
+	Returns the average (OptionalDouble).
