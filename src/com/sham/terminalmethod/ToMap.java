@@ -6,8 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-record Product(Integer id, String name) {
-}
+record Product(Integer id, String name){}
 
 public class ToMap {
 	public static void main(String[] args) {

@@ -1,10 +1,63 @@
 package interview;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 record Employee(String name, double salary) { }
 
 public class AdvanceRealInterviewQuestion{
 	public static void main(String[] args) {
+		
+		
+//		List<Employee> employees = List.of(
+//		        new Employee("A", 50000),
+//		        new Employee("B", 70000),
+//		        new Employee("C", 60000)
+//		);
+		
+//		Double double1 = employees.stream()
+//			.map(Employee::salary)
+//			.distinct()
+//			.sorted(Comparator.reverseOrder())
+//			.skip(1)
+//			.findFirst()
+//			.get();
+//		
+//		System.out.println(double1);
+		
+//		Second laregest
+		
+//		int a[]= {10,5,20,8};
+//				
+//		Integer integer = Arrays.stream(a)
+//			.boxed()
+//			.distinct()
+//			.sorted(Comparator.reverseOrder())
+//			.skip(1)
+//			.findFirst()
+//			.get();
+//		
+//		System.out.println(integer);
+		
+		
+		
+	
+//		Integer integer = Arrays.asList(10,5,20,8)
+//			.stream()
+//			.distinct()
+//			.sorted(Comparator.reverseOrder())
+//			.skip(1)
+//			.findFirst()
+//			.get();		
+//		System.out.println(integer);
+		
+		
+		
+		
+		
+		
 		
 //		Q1.How do you retrieve the 5th element from a List in Java 8?
 		
@@ -311,6 +364,70 @@ public class AdvanceRealInterviewQuestion{
 //		Map<Character, List<String>> collect = Arrays.stream(input.split(" "))
 //			.collect(Collectors.groupingBy(word->word.charAt(0)));
 //		System.out.println(collect);
+		
+		
+		
+		
+		
+		
+//		Find the third largest distinct number in a list.
+		
+//		List<String> words = Arrays.asList("Java", "SpringBoot", "Microservices", "API");
+//
+//		String string = words.stream()
+//			.sorted(Comparator.comparingInt(String::length).reversed())
+//			.findFirst()
+//			.get();
+//		
+//		System.out.println(string);
+		
+		
+		
+//		Find highest even number
+		
+//		List<Integer> nums = Arrays.asList(10, 15, 20, 25, 40);
+//		
+//		Integer integer = nums.stream()
+//			.filter(n->n%2==0)
+//			.sorted(Comparator.reverseOrder())
+//			.findFirst()
+//			.get();
+//		System.out.println(integer);
+		
+		
+//		Find the top 3 largest distinct numbers
+		
+//		List<Integer> list = Arrays.asList(10, 20, 30, 40, 50, 50);
+//		
+//		list.stream()
+//			.distinct()
+//			.sorted(Comparator.reverseOrder())
+//			.limit(3)
+//			.collect(Collectors.toList())
+//			.forEach(System.out::println);
+		
+		
+		
+//		Find the second most frequent element
+		
+		List<Integer> list = Arrays.asList(1, 1, 2, 2, 2, 3);
+		
+		list.stream().collect(Collectors.groupingBy(n->n, Collectors.counting()))
+		.entrySet()
+		.stream()
+		.sorted();
+		
+		
+		
+		
+		
+		
+//		https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5289725-S1944219_en&title=Custom+Software+Engineer
+		
+		
+		
+		
+		
 		
 	}
 }
