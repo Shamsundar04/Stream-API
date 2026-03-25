@@ -4,8 +4,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 record Employee(String name, Integer age, Double salary, String gender) {
     
@@ -263,9 +266,9 @@ public class Stram84 {
 //		list.stream().sorted((e1,e2)->(e1.name().length()-(e2.name().length())))
 //			.forEach(System.out::println);
 
-		list.stream().sorted(Comparator.comparingInt(e->e.name().length()))
-		.forEach(System.out::println);
-		
+//		list.stream().sorted(Comparator.comparingInt(e->e.name().length()))
+//		.forEach(System.out::println);
+//		
 //		or
 		
 //		list.stream().sorted((e1,e2)->(e1.name().length()-(e2.name().length())))
@@ -312,6 +315,9 @@ public class Stram84 {
 //		27. Retrieve the Names of Employees in Reverse Order:
 //		   - Get a list of employee names in reverse order (from the last employee to the first).
 
+		
+		
+		
 //		List<Employee> collect = list.stream().collect(Collectors.toList());
 //		collect.forEach(System.out::println);
 //		Collections.reverse(collect);
@@ -321,7 +327,7 @@ public class Stram84 {
 		
 //		28. Find the Highest Salary Among Female Employees:
 //		   - Find the highest salary among female employees.
-
+		
 //		Optional<Employee> collect = list.stream().filter(emp->emp.gender().equals("Female"))
 //		.collect(Collectors.maxBy(Comparator.comparingDouble(Employee::salary)));
 //		System.out.println(collect);
@@ -347,9 +353,9 @@ public class Stram84 {
 //		30. Find the Sum of Salaries for Employees with Names Containing "Smith":
 //		   - Calculate the sum of salaries for employees whose names contain the substring "Smith."
 		
-//		Double collect = list.stream().filter(name -> name.name().contains("Smith"))
+//		double sum = list.stream().filter(name -> name.name().contains("Smith"))
 //				.mapToDouble(k -> k.salary()).sum();
-//		System.out.println(collect);
+//		System.out.println(sum);
 				
 		
 //		31. Find the Names of Employees Aged 30-40 with Salaries Between $50,000 and $60,000:
@@ -377,10 +383,12 @@ public class Stram84 {
 //				.map(Map.Entry::getKey) // getting key of max value
 //				.orElseThrow(); // getting the key
 //				System.out.println(orElseThrow3);
+		
 
 
 //		35. Group Employees by Age and Count:
 //		   - Group employees by age and count the number of employees in each age group.
+		
 		
 //		list.stream().collect(Collectors.groupingBy(Employee::age,Collectors.counting()))
 //		.forEach((key,value)->System.out.println(key+" - "+value));
@@ -388,18 +396,17 @@ public class Stram84 {
 		
 //		36. Find the Employee with the Longest Name:
 //		   - Find the employee with the longest name.
-//		Employee employee = list.stream().max((o1,o2)->o1.name().length()-o2.name().length()).
-//				get();
-//		
-//		System.out.println(employee);
 		
-//		Employee employee2 = list.stream().max(Comparator.comparingInt(n->n.name().length())).get();
-//		System.out.println(employee2);
-		
-		
-		
+//		Optional<Employee> max = list.stream().max(Comparator.comparingInt(e->e.name().length()));
+//		System.out.println(max);
+
 //		37. Calculate the Sum of Salaries for Each Age:
 //		   - Calculate the sum of salaries for each distinct age in a map.
+		
+//		list.stream().collect(Collectors.groupingBy(Employee::age, 
+//				Collectors.summingDouble(Employee::salary)))
+//			.forEach((k,v)->System.out.println(k+" "+v));
+		
 		
 //		list.stream().collect(Collectors.groupingBy(Employee::age,
 //				Collectors.summingDouble(Employee::salary)))
@@ -416,7 +423,7 @@ public class Stram84 {
 		
 //		62. Retrieve Employees with Unique Names:
 //			  - Find employees with unique names (no duplicate names in the list).
-	
+
 //		list.stream().collect(Collectors.groupingBy(e->e.name(), Collectors.counting()))
 //		.entrySet()
 //		.stream()
@@ -433,7 +440,13 @@ public class Stram84 {
 		
 //		67. Find Employees with the Same Salary:
 //		   - Identify and display employees who have the same salary.
-
+		
+		list.stream().collect(Collectors.groupingBy(Employee::salary, 
+				Collectors.mapping(Employee::name, Collectors.toList())))
+		.
+		
+		
+		
 //		list.stream().collect(Collectors.groupingBy(Employee::salary))
 //		.entrySet()
 //		.stream()
