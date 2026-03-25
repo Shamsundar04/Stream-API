@@ -1,9 +1,14 @@
 package interview;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 record Employee(String name, double salary) { }
 
@@ -61,7 +66,7 @@ public class AdvanceRealInterviewQuestion{
 		
 //		Q1.How do you retrieve the 5th element from a List in Java 8?
 		
-//		List<String> list = Arrays.asList("a","b","c","d","e","f");
+//		List<String> list = Arrays.asList("a","b","c","d","e","f");		
 //		System.out.println(list.stream().skip(4).findFirst().get());
 //		
 //		Optional<String> first = list.stream().skip(4).findFirst();
@@ -119,7 +124,8 @@ public class AdvanceRealInterviewQuestion{
 //		Unique [3,4,5]
 		
 //		List<Integer> list = Arrays.asList(1,2,3,1,2,4,5);
-//		
+		
+		
 //		Map<Integer, Long> freq = list.stream()
 //				.collect(Collectors.groupingBy(i -> i, Collectors.counting()));
 //		
@@ -163,23 +169,24 @@ public class AdvanceRealInterviewQuestion{
 //		
 //		System.out.println(list2);
 		
-		
-		
 //		Q.8 Given a sentence, how do you find duplicate words along with their
 //		occurrence count, sorted by frequency in descending order?
 
-//		String sentence="Java is Java and Java is great";
-//			
-//		String[] split = sentence.split(" ");
-//		
-//		Map<String, Long> collect = Arrays.stream(split)
-//				.collect(Collectors.groupingBy(w->w,Collectors.counting()));
-//		
-//		List<String> collect2 = collect.entrySet().stream().filter(e->e.getValue()>1)
-//			.map(e->e.getKey())
-//			.collect(Collectors.toList());
-//		
-//		System.out.println(collect2);
+		String sentence="Java is Java and Java is great";
+			
+		String[] split = sentence.split(" ");
+		
+		Map<String, Long> collect = Arrays.stream(split)
+				.collect(Collectors.groupingBy(w->w,Collectors.counting()));
+		
+		List<String> collect2 = collect.entrySet().stream().filter(e->e.getValue()>1)
+			.map(e->e.getKey())
+			.collect(Collectors.toList());
+		
+		System.out.println(collect2);
+		
+		
+		
 		
 		
 //		Q10.How do you print the top 3 longest Strings from a list using Java 8 Streams?
@@ -296,7 +303,7 @@ public class AdvanceRealInterviewQuestion{
 //		Output
 //		[g, r, m]
 		
-//		String str="programming";
+//		String str="programming";		
 //		
 //		Set<Character> collect = str.chars().mapToObj(c->(char)c)
 //		.collect(Collectors.groupingBy(w->w,Collectors.counting()))
@@ -311,7 +318,6 @@ public class AdvanceRealInterviewQuestion{
 //		10. Find the most frequent character
 		
 //		String str = "success";
-//	
 //		Character character = str.chars().mapToObj(c->(char)c)
 //			.collect(Collectors.groupingBy(c->c, Collectors.counting()))
 //			.entrySet()
@@ -336,9 +342,6 @@ public class AdvanceRealInterviewQuestion{
 //		12. Find the second highest occurring character
 //		o/p = c
 		
-//		String str = "aabbcccddddd";
-//		
-//		
 //		Character character = str.chars().mapToObj(c->(char)c)
 //			.collect(Collectors.groupingBy(c->c, Collectors.counting()))
 //			.entrySet()
@@ -360,7 +363,6 @@ public class AdvanceRealInterviewQuestion{
 
 		
 //		String input = "java jdk jre spring selenium socket";
-		
 //		Map<Character, List<String>> collect = Arrays.stream(input.split(" "))
 //			.collect(Collectors.groupingBy(word->word.charAt(0)));
 //		System.out.println(collect);
@@ -414,20 +416,12 @@ public class AdvanceRealInterviewQuestion{
 		
 		list.stream().collect(Collectors.groupingBy(n->n, Collectors.counting()))
 		.entrySet()
-		.stream()
-		.sorted();
-		
-		
+		.stream();
 		
 		
 		
 		
 //		https://www.accenture.com/in-en/careers/jobdetails?id=ATCI-5289725-S1944219_en&title=Custom+Software+Engineer
-		
-		
-		
-		
-		
 		
 	}
 }
