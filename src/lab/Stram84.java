@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+
 record Employee(String name, Integer age, Double salary, String gender) {
     
     // Custom constructor
@@ -441,29 +442,19 @@ public class Stram84 {
 //		67. Find Employees with the Same Salary:
 //		   - Identify and display employees who have the same salary.
 		
-		list.stream().collect(Collectors.groupingBy(Employee::salary, 
-				Collectors.mapping(Employee::name, Collectors.toList())))
-		.
-		
-		
-		
-//		list.stream().collect(Collectors.groupingBy(Employee::salary))
+//		list.stream().collect(Collectors.groupingBy(Employee::salary, 
+//				Collectors.mapping(Employee::name, Collectors.toList())))
 //		.entrySet()
 //		.stream()
 //		.filter(e->e.getValue().size()>1)
-//		.forEach(e->{
-//			Double salary=e.getKey();
-//			List<Employee> employees = e.getValue();
-//			List<String> collect = employees.stream().map(Employee::name).collect(Collectors.toList());
-//			System.out.println(salary+" "+collect);
-//		});
-				
+//		.forEach(e->System.out.println(e.getKey()+" "+e.getValue()));	
 				
 //		68. Find the Employee with the Shortest Name Among Male Employees:
 //		   - Find the male employee with the shortest name.
 		
-//		Employee employee = list.stream().filter(emp->emp.gender().equals("Female"))
-//		.min(Comparator.comparing(e->e.name().length())).get();	
+//		Employee employee = list.stream().filter(e->e.gender().equals("Male"))
+//		.min(Comparator.comparingInt(e->e.name().length())).get();
+//		
 //		System.out.println(employee);
 		
 		
@@ -482,10 +473,6 @@ public class Stram84 {
 //		70. Find the Oldest Employee with the Lowest Salary:
 //		   - Find the oldest employee with the lowest salary.		
 		
-
-//		list.stream().filter(emp->emp.age()==list.stream().mapToInt(Employee::age).max().getAsInt())
-//		.min(Comparator.comparingDouble(Employee::salary)));
-		
 //		Employee employee9 = list.stream()
 //				.filter(k->k.age()==list.stream().mapToInt(Employee::age).max().getAsInt())
 //				.min(Comparator.comparingDouble(Employee::salary)).get();
@@ -493,7 +480,7 @@ public class Stram84 {
 		
 
 //		70. Find the Oldest Employee with the Lowest Salary:
-//		   - Find the oldest employee with the lowest salary.
+//		   - Find the oldest employee with the lowest salary.		
 
 //		Employee employee = list.stream().filter(k->k.age()==list.stream().mapToInt(Employee::age).max().getAsInt())
 //		.min(Comparator.comparing(Employee::salary))
@@ -503,6 +490,22 @@ public class Stram84 {
 
 //		71. Find the Most Common Age Among Employees:
 //		  - Determine the age that is most common among the employees.
+		
+		Integer integer = list.stream().collect(Collectors.groupingBy(Employee::age, Collectors.counting()))
+		.entrySet()
+		.stream()
+		.max(Map.Entry.comparingByValue())
+		.map(Map.Entry::getKey)
+		.get();
+		
+		System.out.println(integer);
+		
+		
+		
+		
+		
+		
+		
 				
 //		 Integer integer = list.stream()
 //				.collect(Collectors.groupingBy(Employee::age , Collectors.counting()))
