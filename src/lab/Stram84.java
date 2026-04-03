@@ -420,8 +420,31 @@ public class Stram84 {
 //		.collect(Collectors.groupingBy(Employee::age,
 //				Collectors.summingDouble(Employee::salary)))
 //		.forEach((key,value)->System.out.println(key+" - "+value));
+		
+		
+		
+//		38. Sort Employees by Age, Then by Salary:
+//		   - Sort employees first by age in ascending order, and then by salary in descending order.
+
+//		list.stream().sorted(Comparator.comparing(Employee::age).thenComparing(Employee::salary))
+//		.forEach(e->System.out.println(e));
+
+//		39. Find the Two Highest Paid Female Employees:
+//		   - Find and display the names of the two highest-paid female employees.
+
+//		list.stream().filter(e->e.gender().equals("Female")).sorted(Comparator.comparing(Employee::salary).reversed())
+//		.limit(2)
+//		.forEach(System.out::println);
+		
+//		40. Find the Employee with the Highest Salary in Each Gender:
+//		   - Find the employee with the highest salary for each gender (male and female).
 
 		
+//		list.stream()
+//		.collect(Collectors.toMap(Employee::gender, k->k,(e1, e2) -> e1.salary()>=e2.salary()?e1:e2))
+//		.forEach((key,value)->System.out.println(key+"-"+value));
+
+
 //		62. Retrieve Employees with Unique Names:
 //			  - Find employees with unique names (no duplicate names in the list).
 
@@ -559,7 +582,9 @@ public class Stram84 {
 //		List<Employee> collect = list.stream()
 //				.filter(e->e.name().toUpperCase().contains("A") && e.name().toUpperCase().contains("E"))
 //				.collect(Collectors.toList());
-//		collect.forEach(e->System.out.println(e.salary()));		
+//		collect.forEach(e->System.out.println(e.salary()));	
+		
+		
 		
 	}
 }
