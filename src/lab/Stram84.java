@@ -2,13 +2,12 @@ package lab;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 
 record Employee(String name, Integer age, Double salary, String gender) {
@@ -67,6 +66,8 @@ public class Stram84 {
 //		
 //		collect.forEach((k,v)->System.out.println(k+" "+v));
 		
+//		list.stream().sorted((e1, e2)->e1.age()-e2.age())
+//		.forEach(e->System.out.println(e));
 		
 		
 //		2. Filter Employees by Age:
@@ -85,6 +86,7 @@ public class Stram84 {
 //		.collect(Collectors.mapping(Employee::name, Collectors.toList()));
 //		
 //		collect.forEach(System.out::println);
+		
 		
 		
 //		4. Map Employee Names:
@@ -136,15 +138,26 @@ public class Stram84 {
 		
 //		list.stream().sorted(Comparator.comparing(Employee::name))
 //			.forEach(System.out::println);
-		
-		
+
+
 //		11. Sort Employees by Age:
 //	    - Sort the employees by age in ascending order.
-		
+
 //		list.stream().sorted(Comparator.comparing(Employee::age))
 //		.forEach(System.out::println);
 		
+//		String str="java";
 		
+//		str.chuollectors.groupingBy(c->c,Collectors.counting()));
+		
+//		Optional<Employee> max = list.stream().max(Comparator.comparing(Employee::salary));
+//			System.out.println(max);
+		
+//		Employee employee = list.stream()
+//				.sorted(Comparator.comparing(Employee::salary)
+//						.reversed()).skip(1).findFirst().get();
+//
+//		System.out.println(employee);
 //		12. Sort Employees by Salary:
 //	    - Sort the employees by salary in descending order.
 		
@@ -229,10 +242,10 @@ public class Stram84 {
 //
 //		collect.forEach((k,v)->System.out.println(k+"  "+v));
 		
-		
 
 //		19. Find the Top N Highest Paid Employees:
 //		    - Find the top N employees with the highest salaries.
+		
 		
 		
 //		list.stream().sorted(Comparator.comparing(Employee::salary).reversed())
@@ -254,6 +267,7 @@ public class Stram84 {
 //		21. Find the Three Lowest-Paid Employees:
 //		   - Find and display the names of the three employees with the lowest salaries.
 
+
 //		list.stream().sorted(Comparator.comparing(Employee::salary))
 //		.limit(3)
 //		.map(Employee::name)
@@ -262,13 +276,32 @@ public class Stram84 {
 		
 		
 //		22. Sort Employees by Name Length:
-//		   - Sort employees by the length of their names (shortest to longest).		
+//		   - Sort employees by the length of their names (shortest to longest).	
+		
+//		
+//		list.stream().sorted(Comparator.comparingInt(e->e.name().length()))
+//		.forEach(System.out::println);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 //		list.stream().sorted((e1,e2)->(e1.name().length()-(e2.name().length())))
 //			.forEach(System.out::println);
 
-//		list.stream().sorted(Comparator.comparingInt(e->e.name().length()))
+//		list.stream().sorted(Comparator.comparing(e->e.salary()))
 //		.forEach(System.out::println);
+		
 //		
 //		or
 		
@@ -357,17 +390,23 @@ public class Stram84 {
 //		double sum = list.stream().filter(name -> name.name().contains("Smith"))
 //				.mapToDouble(k -> k.salary()).sum();
 //		System.out.println(sum);
-				
+		
 		
 //		31. Find the Names of Employees Aged 30-40 with Salaries Between $50,000 and $60,000:
 //		   - Retrieve the names of employees aged 30-40 with salaries between $50,000 and $60,000.
 
+		
+//		list.stream().filter(e->e.age()>30&&e.age()<40&&e.salary()>50000&&e.salary()<60000)
+//		.forEach(System.out::println);
+		
+		
+		
 //		list.stream().filter(emp->(emp.age()>30&&emp.age()<40)&&(emp.salary()>50000&&emp.salary()<60000))
 //			.forEach(System.out::println);
 		
 //		32. Calculate the Total Number of Employees:
 //		   - Determine the total count of employees.
-		
+
 //		long count = list.stream().count();
 //		System.out.println(count);
 		
@@ -375,7 +414,21 @@ public class Stram84 {
 //		33. Find the Most Common Age Among Employees:
 //		   - Determine the age that is most common among the employees.
 		
+		Integer integer = list.stream().collect(Collectors.groupingBy(e->e.age(), Collectors.counting()))
+		.entrySet()
+		.stream()
+		.max(Map.Entry.comparingByValue())
+		.map(Map.Entry::getKey)
+		.get();
 		
+		
+		
+		
+		System.out.println(integer);
+		
+		
+		
+//		
 //		Integer orElseThrow3 = list.stream()
 //				.collect(Collectors.groupingBy(Employee::age,Collectors.counting())) // grouping ages and count
 //				.entrySet() // converting to set
@@ -389,6 +442,9 @@ public class Stram84 {
 
 //		35. Group Employees by Age and Count:
 //		   - Group employees by age and count the number of employees in each age group.
+		
+		
+		
 		
 		
 //		list.stream().collect(Collectors.groupingBy(Employee::age,Collectors.counting()))
@@ -412,7 +468,9 @@ public class Stram84 {
 //		list.stream().collect(Collectors.groupingBy(Employee::age,
 //				Collectors.summingDouble(Employee::salary)))
 //		.forEach((key,value)->System.out.println(key+" - "+value));
-		
+
+
+
 //		Set<Integer> set=new HashSet<>();
 //		set.clear();
 //		
@@ -472,13 +530,18 @@ public class Stram84 {
 //		.filter(e->e.getValue().size()>1)
 //		.forEach(e->System.out.println(e.getKey()+" "+e.getValue()));	
 				
+		
+		
+		
+		
 //		68. Find the Employee with the Shortest Name Among Male Employees:
 //		   - Find the male employee with the shortest name.
 		
 //		Employee employee = list.stream().filter(e->e.gender().equals("Male"))
 //		.min(Comparator.comparingInt(e->e.name().length())).get();
-//		
 //		System.out.println(employee);
+		
+		
 		
 		
 //		69. Find the Most Common Salary Value:
@@ -489,8 +552,9 @@ public class Stram84 {
 //			.stream()
 //			.max(Map.Entry.comparingByValue())
 //			.map(Map.Entry::getKey).get();
-//		
 //		System.out.println(double1);
+		
+		
 		
 		
 //		70. Find the Oldest Employee with the Lowest Salary:
@@ -514,19 +578,14 @@ public class Stram84 {
 //		71. Find the Most Common Age Among Employees:
 //		  - Determine the age that is most common among the employees.
 		
-		Integer integer = list.stream().collect(Collectors.groupingBy(Employee::age, Collectors.counting()))
-		.entrySet()
-		.stream()
-		.max(Map.Entry.comparingByValue())
-		.map(Map.Entry::getKey)
-		.get();
-		
-		System.out.println(integer);
-		
-		
-		
-		
-		
+//		Integer integer = list.stream().collect(Collectors.groupingBy(Employee::age, Collectors.counting()))
+//		.entrySet()
+//		.stream()
+//		.max(Map.Entry.comparingByValue())
+//		.map(Map.Entry::getKey)
+//		.get();
+//		
+//		System.out.println(integer);
 		
 		
 				
@@ -583,8 +642,157 @@ public class Stram84 {
 //				.filter(e->e.name().toUpperCase().contains("A") && e.name().toUpperCase().contains("E"))
 //				.collect(Collectors.toList());
 //		collect.forEach(e->System.out.println(e.salary()));	
+	
+//		find longest
+		
+//		String s = "I am learning sams API in Java";
+//		
+//		int length = Arrays.stream(s.split(" "))
+//		.sorted(Comparator.comparingInt(String::length).reversed())
+//		.skip(1)
+//		.findFirst()
+//		.get().length();
+//		
+//		System.out.println(length);
+		
+		
+//		String s = "dabcadefg";
+//		
+//		String collect = s.chars().mapToObj(e->(char)e)
+//		.distinct()
+//		.map(String::valueOf)
+//		.collect(Collectors.joining());
+//		
+//		System.out.println(collect);
+		
+		
+//		String s = "I am learning streams API in Java Java";
+//		
+//		Map<String, Long> collect = Arrays.stream(s.split(" "))
+//			.collect(Collectors.groupingBy(e->e, Collectors.counting()));
+//		
+//		System.out.println(collect);
 		
 		
 		
+		
+//		  String s = "I am learning streams API in Java";
+//
+//	        Set<Character> vowels = Set.of('a','e','i','o','u');
+//
+//	        String result = Arrays.stream(s.split(" "))
+//	                .filter(word -> word.toLowerCase()
+//	                        .chars()
+//	                        .filter(c -> vowels.contains((char) c))
+//	                        .count() == 2)
+//	                .collect(Collectors.joining(" "));
+//
+//	        System.out.println(result);
+		
+		
+//		Integer[] arr = {1,2,3,4,5,6,7,8};
+//		
+//		Map<Boolean, List<Integer>> map = Arrays.stream(arr)
+//		.collect(Collectors.partitioningBy(n->n%2==0));
+//		
+//		List<List<Integer>> asList = Arrays.asList(map.get(false), map.get(true));
+//		System.out.println(asList);
+		
+		
+//		String s = "Mississippi";
+//		
+//		Map<Character, Long> collect = s.chars().mapToObj(c->(char)c)
+//		.collect(Collectors.groupingBy(c->c,Collectors.counting()));
+//		
+//		System.out.println(collect);
+		
+//		int []arr = {1, 2, 3, 5, 4};
+//		
+//		Arrays.stream(arr).boxed()
+//		.sorted((a,b)->b-a).forEach(System.out::print);
+		
+		
+//		int []arr = {1,6,7,8,1,1,8,8,7};
+//		
+//		int sum = Arrays.stream(arr).distinct().sum();
+//		System.out.println(sum);
+		
+		
+//		Given a string, find the first non-repeated character.
+//		input: String s = "Hello World";
+//		output: H
+		
+//		String s = "Hello World";
+//		
+//		Character character = s.chars().mapToObj(e->(char)e)
+//		.filter(e->s.indexOf(e)!=s.lastIndexOf(e))
+//		.findFirst().get();
+//		
+//		System.out.println(character);
+		
+		
+//        int[] arr = {2, 3, 10, 14, 20, 24, 30, 34, 40, 44, 50, 54};
+//        LinkedHashMap<Integer, List<Integer>> collect = Arrays.stream(arr).boxed()
+//        .collect(Collectors.groupingBy(n->(n/10)*10, LinkedHashMap::new, Collectors.toList()));
+//        
+//		System.out.println(collect);
+		
+		
+		
+//		Given a list of Strings, create a list that contains only integers.
+//		input: String [] s = {"abc", "123", "456", "xyz"};
+//		output: [123, 456]
+		
+		
+//		String [] s = {"abc", "123", "456", "xyz"};
+//		
+//		List<Integer> collect = Arrays.stream(s)
+//			.filter(e->e.matches("\\d+"))
+//			.map(Integer::parseInt)
+//			.collect(Collectors.toList());
+//		
+//		System.out.println(collect);
+		
+		
+//        String[] s = {"pat", "tap", "pan", "nap", "Team", "tree", "meat"};
+//
+//        Map<String, List<String>> collect = Arrays.stream(s).collect(Collectors.groupingBy(str->{
+//        	char[] ch = str.toLowerCase().toCharArray();
+//        	Arrays.sort(ch);
+//        	return new String(ch);
+//        }, 
+//        LinkedHashMap::new,
+//        Collectors.toList()
+//        ));
+//
+//        System.out.println(collect);
+      
+		
+//		String string = Arrays.stream(s.split(" "))
+//			.sorted(Comparator.comparingInt(String::length).reversed())
+//			.skip(1)
+//			.findFirst()
+//			.get();
+//		
+//		System.out.println(string);
+//		
+//		String string = Arrays.stream(s.split(" "))
+//		.max(Comparator.comparingInt(String::length)).get();
+		
+//		String s = "dabcadefg";
+//		
+//		s.chars().distinct().forEach(e->System.out.print((char)e));
+		
+//		
+//		String[] split = s.split(" ");
+//		
+//		String string = Arrays.stream(split).max(Comparator.comparingInt(String::length)).get();
+//		System.out.println(string);
+		
+//		remove the duplicate 
+		
+//		String s = "dabcadefg";
+//		s.chars().distinct().forEach(e->System.out.print((char)e));
+
 	}
 }
