@@ -45,13 +45,15 @@ public class EmployeeSorting {
 //		students.sort((s1,s2)->s2.rollNumber()-s1.rollNumber());
 
 //		students.sort((s1,s2)->Integer.compare(s1.rollNumber(), s2.rollNumber()));
-		students.sort(Comparator.comparing(Student::name, String.CASE_INSENSITIVE_ORDER));
 		
+//		students.sort(Comparator.comparing(Student::rollNumber));
+		
+		
+	
 		for (Student student : students) {
 			System.out.println(student.rollNumber()+" "+student.name());
 		}
 		
 		
 	}
-
 }
