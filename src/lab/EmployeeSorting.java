@@ -40,12 +40,17 @@ public class EmployeeSorting {
 		students.add(new Student(103, "Sneha Reddy", "Information Technology", 89.0));
 		students.add(new Student(106, "Aditya Deshmukh", "Computer Science", 81.5));
 		
-		students.sort(Comparator.comparingInt(Student::rollNumber));
+//		students.sort(Comparator.comparingInt(Student::rollNumber));
+		
+//		students.sort((s1,s2)->s2.rollNumber()-s1.rollNumber());
+		
+		students.sort((s1,s2)->Integer.compare(s1.rollNumber(), s2.rollNumber()));
 		
 		for (Student student : students) {
-			System.out.println(student);
+			System.out.println(student.rollNumber()+" "+student.name());
 		}
-
+		
+		
 	}
 
 }
