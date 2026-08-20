@@ -1,6 +1,7 @@
 package lab;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 record Student(
@@ -39,7 +40,11 @@ public class EmployeeSorting {
 		students.add(new Student(103, "Sneha Reddy", "Information Technology", 89.0));
 		students.add(new Student(106, "Aditya Deshmukh", "Computer Science", 81.5));
 		
-		students.stream().map(s->s.rollNumber()).sorted().forEach(e->System.out.println(e));
+		students.sort(Comparator.comparingInt(Student::rollNumber));
+		
+		for (Student student : students) {
+			System.out.println(student);
+		}
 
 	}
 
