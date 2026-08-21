@@ -278,9 +278,9 @@ public class Stram84 {
 //		22. Sort Employees by Name Length:
 //		   - Sort employees by the length of their names (shortest to longest).	
 		
-//		
-//		list.stream().sorted(Comparator.comparingInt(e->e.name().length()))
-//		.forEach(System.out::println);
+		
+		list.stream().sorted(Comparator.comparing(e->e.name()))
+		.forEach(System.out::println);
 		
 		
 		
@@ -414,17 +414,17 @@ public class Stram84 {
 //		33. Find the Most Common Age Among Employees:
 //		   - Determine the age that is most common among the employees.
 		
-		Integer integer = list.stream().collect(Collectors.groupingBy(e->e.age(), Collectors.counting()))
-		.entrySet()
-		.stream()
-		.max(Map.Entry.comparingByValue())
-		.map(Map.Entry::getKey)
-		.get();
-		
-		
-		
-		
-		System.out.println(integer);
+//		Integer integer = list.stream().collect(Collectors.groupingBy(e->e.age(), Collectors.counting()))
+//		.entrySet()
+//		.stream()
+//		.max(Map.Entry.comparingByValue())
+//		.map(Map.Entry::getKey)
+//		.get();
+//		
+//		
+//		
+//		
+//		System.out.println(integer);
 		
 		
 		

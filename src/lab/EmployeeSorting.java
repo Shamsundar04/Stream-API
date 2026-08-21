@@ -1,7 +1,6 @@
 package lab;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 record Student(
@@ -10,7 +9,6 @@ record Student(
 	    String course,
 	    double grade
 	) {
-	    // Optional: Compact constructor for validation
 	    public Student {
 	        if (rollNumber <= 0) {
 	            throw new IllegalArgumentException("Roll number must be positive.");
@@ -20,7 +18,6 @@ record Student(
 	        }
 	    }
 
-	    // Optional: Custom helper method
 	    public boolean hasPassed() {
 	        return grade >= 40.0;
 	    }
