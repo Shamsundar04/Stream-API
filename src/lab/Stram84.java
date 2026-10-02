@@ -72,7 +72,7 @@ public class Stram84 {
 		
 //		2. Filter Employees by Age:
 //		 - Get a list of employees older than 30 years.
-		
+				
 //		List<String> collect = list.stream().filter(emp->emp.age()>30)
 //			.collect(Collectors.mapping(Employee::name, Collectors.toList()));
 //		
@@ -87,13 +87,13 @@ public class Stram84 {
 //		
 //		collect.forEach(System.out::println);
 		
-		
-		
 //		4. Map Employee Names:
 //		 - Create a list of employee names (Strings).
 		
 //		list.stream().map(emp->emp.name()).forEach(System.out::println);
 		
+//		List<String> collect = list.stream().map(e->e.name()).collect(Collectors.toList());
+//		System.out.println(collect);
 		
 //		5. Calculate Average Salary:
 //		 - Calculate the average salary of all employees.
@@ -279,8 +279,8 @@ public class Stram84 {
 //		   - Sort employees by the length of their names (shortest to longest).	
 		
 		
-		list.stream().sorted(Comparator.comparing(e->e.name()))
-		.forEach(System.out::println);
+//		list.stream().sorted(Comparator.comparing(e->e.name()))
+//		.forEach(System.out::println);
 		
 		
 		
@@ -793,6 +793,12 @@ public class Stram84 {
 		
 //		String s = "dabcadefg";
 //		s.chars().distinct().forEach(e->System.out.print((char)e));
-
+		
+		String s = "dabcadefg";
+		
+//		Map<Character, Long> collect = s.chars().mapToObj(c->(char)c).collect(Collectors.groupingBy(c->c, Collectors.counting()));
+//		System.out.println(collect);
+		
+		s.chars().forEach(n->System.out.print(n+" "));
 	}
 }
